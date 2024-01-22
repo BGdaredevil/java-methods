@@ -1,17 +1,25 @@
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
         System.out.println("input");
-        String item = sc.nextLine();
-        int qty = sc.nextInt();
+        String a = sc.nextLine();
+        int b = sc.nextInt();
+        System.out.println(repeater(a, b));
 
-        System.out.println(shop(item, qty));
+//        int a = sc.nextInt();
+//        int b = sc.nextInt();
+//        System.out.println(getArea(a, b));
+
+//        String item = sc.nextLine();
+//        int qty = sc.nextInt();
+//
+//        System.out.println(shop(item, qty));
 
 //        String command = sc.nextLine();
 //        int operand1 = sc.nextInt();
@@ -24,20 +32,32 @@ public class Main {
 
     }
 
+    private static int mathPower(int a, int pow) {
+        return (int) Math.pow(a, pow);
+    }
+
+    private  static String repeater(String item, int count) {
+        return  item.repeat(count);
+    }
+
+    private static String getArea(int a, int b) {
+        return String.format("%.2f",(double) a * b);
+    }
     private static String shop(String itemName, int qty) {
-        HashMap<String, Double> prices = new HashMap<String, Double>(4);
-        prices.put("coffee", 1.50);
-        prices.put("water", 1.00);
-        prices.put("coke", 1.40);
-        prices.put("snacks", 2.00);
+        Map<String, Double> prices = Map.of(
+                "coffee", 1.50,
+                "water", 1.00,
+                "coke", 1.40,
+                "snacks", 2.00
+        );
 
         Double price = prices.get(itemName);
 
-        if (price!= null) {
-            return  String.format("%.2f", price * qty);
+        if (price != null) {
+            return String.format("%.2f", price * qty);
         }
 
-        return  "no Such Item";
+        return "no Such Item";
     }
 
     private static double calculate(String comand, int operand1, int operand2) {
