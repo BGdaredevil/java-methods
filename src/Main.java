@@ -9,8 +9,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("input");
-        int a = sc.nextInt();
-        System.out.println(multipyEvens(a));
+        int a = Integer.parseInt(sc.nextLine());
+        String b = sc.nextLine();
+        int c = Integer.parseInt(sc.nextLine());
+        System.out.println(calc(a, b.charAt(0), c));
+
+//        int a = sc.nextInt();
+//        System.out.println(multipyEvens(a));
 
 //        var a = sc.nextLine();
 //        var b = sc.nextLine();
@@ -42,6 +47,28 @@ public class Main {
 //        System.out.println(getGrade(sc.nextDouble()));
 //        System.out.println(getTriangle(sc.nextInt()));
 
+    }
+
+    private static double calc(int a, char op, int b) {
+        switch (op) {
+            case '*' -> {
+                return a * b;
+            }
+            case '/' -> {
+                return (double) a / b;
+            }
+
+            case '+' -> {
+                return a + b;
+            }
+
+            case '-' -> {
+                return a - b;
+            }
+
+        }
+
+        return 0;
     }
 
     private static int multipyEvens(int num) {
