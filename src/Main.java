@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -7,10 +8,71 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         System.out.println("input");
+        String item = sc.nextLine();
+        int qty = sc.nextInt();
+
+        System.out.println(shop(item, qty));
+
+//        String command = sc.nextLine();
+//        int operand1 = sc.nextInt();
+//        int operand2 = sc.nextInt();
+//        System.out.println(calculate(command, operand1, operand2));
 
 //        System.out.println(hetNumSign(sc.nextInt()));
 //        System.out.println(getGrade(sc.nextDouble()));
-        System.out.println(getTriangle(sc.nextInt()));
+//        System.out.println(getTriangle(sc.nextInt()));
+
+    }
+
+    private static String shop(String itemName, int qty) {
+        HashMap<String, Double> prices = new HashMap<String, Double>(4);
+        prices.put("coffee", 1.50);
+        prices.put("water", 1.00);
+        prices.put("coke", 1.40);
+        prices.put("snacks", 2.00);
+
+        Double price = prices.get(itemName);
+
+        if (price!= null) {
+            return  String.format("%.2f", price * qty);
+        }
+
+        return  "no Such Item";
+    }
+
+    private static double calculate(String comand, int operand1, int operand2) {
+        double result = 0;
+
+        switch (comand) {
+            case "add" -> result = add(operand1, operand2);
+            case "subtract" -> result = subtract(operand1, operand2);
+            case "multiply" -> result = mult(operand1, operand2);
+            case "divide" -> {
+                if (operand2 == 0) {
+                    throw new Error("cannot divide by 0");
+                }
+
+                return div(operand1, operand2);
+            }
+        }
+
+        return result;
+    }
+
+    private static int add(int operand1, int operand2) {
+        return operand1 + operand2;
+    }
+
+    private static int subtract(int operand1, int operand2) {
+        return operand1 - operand2;
+    }
+
+    private static int mult(int operand1, int operand2) {
+        return operand1 * operand2;
+    }
+
+    private static double div(int operand1, int operand2) {
+        return (double) operand1 / operand2;
     }
 
     private static String getTriangle(int size) {
