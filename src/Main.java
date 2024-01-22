@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -9,8 +10,15 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("input");
         int a = sc.nextInt();
-        int b = sc.nextInt();
-        System.out.println(mathPower(a, b));
+        System.out.println(multipyEvens(a));
+
+//        var a = sc.nextLine();
+//        var b = sc.nextLine();
+//        System.out.println(getGreater(a, b));
+
+//        int a = sc.nextInt();
+//        int b = sc.nextInt();
+//        System.out.println(mathPower(a, b));
 
 //        String a = sc.nextLine();
 //        int b = sc.nextInt();
@@ -36,17 +44,47 @@ public class Main {
 
     }
 
+    private static int multipyEvens(int num) {
+        int[] numAsStr = Arrays.stream((num + "").split("")).mapToInt(Integer::parseInt).toArray();
+
+        int oddSum = 0;
+        int evenSum = 0;
+
+        for (int i = 0; i < numAsStr.length; i++) {
+            if (numAsStr[i] % 2 == 0) {
+                evenSum += numAsStr[i];
+            } else {
+                oddSum += numAsStr[i];
+            }
+        }
+
+        return evenSum * oddSum;
+    }
+
+    private static String getGreater(String a, String b) {
+        return a.compareTo(b) > 0 ? a : b;
+    }
+
+    private static char getGreater(char a, char b) {
+        return a > b ? a : b;
+    }
+
+    private static int getGreater(int a, int b) {
+        return Math.max(a, b);
+    }
+
     private static int mathPower(int a, int pow) {
         return (int) Math.pow(a, pow);
     }
 
-    private  static String repeater(String item, int count) {
-        return  item.repeat(count);
+    private static String repeater(String item, int count) {
+        return item.repeat(count);
     }
 
     private static String getArea(int a, int b) {
-        return String.format("%.2f",(double) a * b);
+        return String.format("%.2f", (double) a * b);
     }
+
     private static String shop(String itemName, int qty) {
         Map<String, Double> prices = Map.of(
                 "coffee", 1.50,
