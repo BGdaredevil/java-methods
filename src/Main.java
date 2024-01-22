@@ -9,10 +9,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("input");
-        int a = Integer.parseInt(sc.nextLine());
-        String b = sc.nextLine();
-        int c = Integer.parseInt(sc.nextLine());
-        System.out.println(calc(a, b.charAt(0), c));
+
+        System.out.println(passValidate(sc.nextLine()));
+
+//        int a = Integer.parseInt(sc.nextLine());
+//        String b = sc.nextLine();
+//        int c = Integer.parseInt(sc.nextLine());
+//        System.out.println(calc(a, b.charAt(0), c));
 
 //        int a = sc.nextInt();
 //        System.out.println(multipyEvens(a));
@@ -47,6 +50,37 @@ public class Main {
 //        System.out.println(getGrade(sc.nextDouble()));
 //        System.out.println(getTriangle(sc.nextInt()));
 
+    }
+
+    private static String passValidate(String input) {
+        boolean isValid = true;
+        String errs = "";
+
+        if (input.length() < 6 || input.length() > 10) {
+            errs += "Password must be between 6 and 10 characters\n";
+            isValid = false;
+        }
+
+        int digitCount = Arrays.stream(input.split("")).filter(element -> element.matches("\\d")).toArray().length;
+        int letterCount = Arrays.stream(input.split("")).filter(element -> element.matches("[a-zA-Z]")).toArray().length;
+
+        if (digitCount < 2) {
+            errs += "Password must have at least 2 digits\n";
+            isValid = false;
+        }
+
+        if (letterCount == 0) {
+            errs += "Password must contain letters and digits\n";
+            isValid = false;
+        }
+
+        if (digitCount + letterCount < input.length()) {
+            errs += "Password must contain only letters and digits\n";
+            isValid = false;
+        }
+
+
+        return isValid ? "Password is valid" : errs.trim();
     }
 
     private static double calc(int a, char op, int b) {
