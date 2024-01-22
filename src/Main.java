@@ -8,9 +8,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("input");
-        String a = sc.nextLine();
+        int a = sc.nextInt();
         int b = sc.nextInt();
-        System.out.println(repeater(a, b));
+        System.out.println(mathPower(a, b));
+
+//        String a = sc.nextLine();
+//        int b = sc.nextInt();
+//        System.out.println(repeater(a, b));
 
 //        int a = sc.nextInt();
 //        int b = sc.nextInt();
